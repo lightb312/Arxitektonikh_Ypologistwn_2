@@ -151,4 +151,53 @@ _**ΑΡΧΙΤΕΚΤΟΝΙΚΗ ΠΡΟΗΓΜΕΝΩΝ ΥΠΟΛΟΓΙΣΤΩΝ- 2η �
           system.l2.overall_miss_rate::total             0.999944                       # miss rate for overall accesses
 
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ΔΙΑΓΡΑΜΜΑΤΑΑΑΑΑΑΑ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Παρατηρούμε από τα διαγράμματα πως τα sim_sec(χρόνος εκτέλεσης),το CPI (cyrcles per instructions), το miss_rate στην DL1(L1 data cache) 
+και την L2 (L2 cache) διαμορφώνονται ανάλογα. Το διάγραμμα του miss_rate της IL1(L1 instruction cache) είναι ανεξάρτητο από τα υπόλοιπα. 
+Το benchmark spechsjeng είναι κατά πολύ πιο αργό από τα άλλα,ενώ το benchmark specmcf έχει το μεγαλύτερο miss_rate στην IL1.
+Τέλος παρατηρούμε πως τα spechlibm & spechsjeng έχουν πάρα πολυ μεγάλο miss_rate στην L2 cache. (αστοχία access)
+
+ 
+
+ΕΡΩΤΗΜΑ 3
+
+Τα αποτελέσματα από την εκτέλεση των 5 benchmarkts με την προσθήκη της παραμέτρου --cpu-clock=1.5GHz για τον χρόνο εκτέλεσης(sim_seconds) είναι τα εξής:
+
+spechzip:  sim_seconds                                    0.109754                       # Number of seconds simulated
+specmcf:   sim_seconds                                    0.086162                       # Number of seconds simulated
+spechmmer: sim_seconds                                    0.079149                       # Number of seconds simulated
+specsjeng: sim_seconds                                    0.581937                       # Number of seconds simulated
+speclimb:  sim_seconds                                    0.205034                       # Number of seconds simulated
+
+
+
+
+!!!!!!!!!!!!!!ΔΙΑΓΡΑΜΜΑ ΔΙΑΦΟΡΑΣ ΧΡΌΝΟΥ ΕΚΤΕΛΕΣΗΣ!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+Συμπεραίνουμε από το διάγραμμα , όπως περιμέναμε καθώς μειώσαμε την συχνότητα σε 1,5GHZ( από την default τιμη (= 2GHZ)), πως ο χρόνος εκτέλεσης αυξάνεται και στα 5 benchmarks. 
+
+Από τα αρχεία stats.txt για το benchmark spechzip παίρνουμε για τις συχνότητες 2GHZ & 1.5GHZ αντίστοιχα:
+spechzip( 2GHZ)
+system.clk_domain.clock                          1000                       # Clock period in ticks
+system.cpu_clk_domain.clock                       500                       # Clock period in ticks
+
+
+spechzip(1.5GHZ)
+system.clk_domain.clock                          1000                       # Clock period in ticks
+system.cpu_clk_domain.clock                       667                       # Clock period in ticks
+
+
+Αν ανατρέξουμε και στα αρχεία stats.txt των υπόλοιπων 4 benchmark θα βρούμε τις ίδιες τιμές.
+Συμπεραίνουμε λοιπόν ότι η πρώτη παραμετρος system.clk_domain.clock αναφέρεται στο ρολόι του συστήματος, ενώ η δεύτερη παράμετρος system.cpu_clk_domain.clock στο ρολόι της cpu. 
+1000ps = 1GHZ
+500ps = 2GHZ ( default τιμή της συχνότητας )
+667ps = 1.5GHZ 
+Όλα αυτά γίνονται πιο ξεκάθαρα αν ψάξουμε το clk_domain στο αρχέιο config.json.
+** Ο gem5 αντιστοιχεί τα ticks σε picoseconds...                          5GHz???????????????????
+
+Από το διάγραμμα που συγκρίνουμε τους χρόνους εκτέλεσης στις 2 συχνότητες παρατηρούμε ότι όσο έχουμε μεγαλύτερη συχνότητα έχουμε τόσο 
+καλύτερο run time έχουμε. Αυτό είναι ένα γενικό συμπέρασμα το οποίο όμως δεν ισχύει για τα benchmarks specsjeng και speclimb , τα οποία έχουν μεγάλη αστοχία στην L2 cache & αυτό λογικά προκαλεί καθυστερήσεις. Συμπεραίνουμε ότι δεν έχουμε τέλειο scalling. 
 
