@@ -224,5 +224,38 @@ system.cpu_clk_domain.clock                       667                       # Cl
 
 **ΜΕΡΟΣ Β**
 
+**ΕΡΩΤΗΜΑ 1**
+
+Μέσα από το αρχείο config.ini βλέπουμε τις default τιμές των παραμέτρων που ζητούμαστε να ελέγξουμε και να αλλάξουμε για τη μέγιστη επίδοση:
+
+    L1D, L1I, L2  Associativity: 2, 2, 8 αντίστοιχα
+    DL1, IL1, L2 size = 64kB, 32kB, 2MB
+    Μέγεθος Cache Line: 64
+    
+> Ξεκινήσαμε από το benchmark _**spenczip**_ 
+
+Η εντολή που μας έδωσε το optimal αποτέλεσμα είναι η εξής:
+
+        ./build/ARM/gem5.opt -d spec_results/specbzip configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l1d_size=256kB --l1d_assoc=8 --l2_size=4MB         --cacheline_size=256 -c spec_cpu2006/401.bzip2/src/specbzip -o "spec_cpu2006/401.bzip2/data/input.program 10" -I 100000000
+        
+Αποφασίσαμε αρχικά να εκτελέσουμε τις εντολές στο terminal by hand ώστε να μπορέσουμε να παρατηρήσουμε καλύτερα την διαδικάσια και να αντιληφθούμε καλύτερα τα αποτέλεσματα που παίρνουμε.Σε κάθε δοκιμή που κάναμε αλλάζαμε μόνο μια παράμετρο, ενώ τις άλλες τις αφήναμε στην default τιμή τους.
+Τα αποτελέσματα από τις δοκιμές φαίνονται στα αρχεία _stats.txt_ που βρίσκονται μέσα στο φάκελο **spenczip_way_to_optimal**.
+
+Οι δοκιμές αυτές αναλυτικά είναι: 
+1.l1i_size = 64kB
+2.l1i_assoc=4
+3,4.l1d_size=128kB,256kB
+5,6.l1d_assoc=4,8
+7,8.l2_size=1MB,4MB
+9,10.l2_assoc=2,4
+11,12.cacheline_size=128,256
+
+13.**OPTIMAL** 
+l1d_size=256kB , l1d_assoc=8 ,l2_size=4MB  ,cacheline_size=256
+
+Τα αποτελέσματα όσο αφορά το CPI για το benchmark spenczip για τις παραπάνω δοκιμές φαίνονται και στο παρακάτω **διάγραμμα**:
+
+
+
 
 
