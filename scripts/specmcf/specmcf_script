@@ -1,0 +1,49 @@
+#!/bin/bash
+
+j=0
+for i in 32 128 256
+do
+ let j++
+./build/ARM/gem5.opt -d script1/specmcf/l1d/specmcf_"$j" configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l1d_size="$i"kB -c spec_cpu2006/429.mcf/src/specmcf -o "spec_cpu2006/429.mcf/data/inp.in" -I 100000000
+
+done
+
+j=0
+for i in 64 128
+do
+ let j++
+./build/ARM/gem5.opt -d script1/specmcf/l1i/specmcf_"$j" configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l1i_size="$i"kB -c spec_cpu2006/429.mcf/src/specmcf -o "spec_cpu2006/429.mcf/data/inp.in" -I 100000000
+
+done
+
+j=0
+for i in 1 4 
+do
+ let j++
+./build/ARM/gem5.opt -d script1/specmcf/l2/specmcf_"$j" configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l2_size="$i"MB  -c spec_cpu2006/429.mcf/src/specmcf -o "spec_cpu2006/429.mcf/data/inp.in" -I 100000000
+
+done
+
+j=0
+for i in 1 4 8 
+do
+ let j++
+./build/ARM/gem5.opt -d script1/specmcf/l1_assoc/specmcf_"$j" configs/example/se.py --cpu-type=MinorCPU --caches --l2cache  --l1d_assoc=$i --l1i_assoc=$i -c spec_cpu2006/429.mcf/src/specmcf -o "spec_cpu2006/429.mcf/data/inp.in" -I 100000000
+
+done
+
+j=0
+for i in 1 2 4 
+do
+ let j++
+./build/ARM/gem5.opt -d script1/specmcf/l2_assoc/specmcf_"$j" configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l2_assoc=$i -c spec_cpu2006/429.mcf/src/specmcf -o "spec_cpu2006/429.mcf/data/inp.in" -I 100000000
+
+done
+
+j=0
+for i in 32 128 265
+do
+ let j++
+./build/ARM/gem5.opt -d script1/specmcf/cl/specmcf_"$j" configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --cacheline_size=$i --cpu-clock=1GHz -c spec_cpu2006/429.mcf/src/specmcf -o "spec_cpu2006/429.mcf/data/inp.in" -I 100000000
+
+done
