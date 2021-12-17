@@ -256,6 +256,7 @@ l1d_size=256kB , l1d_assoc=8 ,l2_size=4MB  ,cacheline_size=256
 Τα αποτελέσματα όσο αφορά το CPI για το benchmark spenczip για τις παραπάνω δοκιμές φαίνονται και στο παρακάτω **διάγραμμα**:
 
 
+![image](https://user-images.githubusercontent.com/95879036/146532938-f66c25bd-60c1-4362-ad4e-c9333ecf5ea8.png)
 
 
 
