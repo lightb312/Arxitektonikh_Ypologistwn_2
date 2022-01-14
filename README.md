@@ -264,5 +264,16 @@ l1d_size=256kB , l1d_assoc=8 ,l2_size=4MB  ,cacheline_size=256
 
 Για τα υπόλοιπα benchmarks αποφασίσαμε να χρησιμοποιήσουμε, όπως προτείνεται _**scripts**_ τα οποία φαίνονται στο φάκελο με το αντίστοιχο όνομα.
 
+![image](https://user-images.githubusercontent.com/95879036/149569329-8c637021-0d90-4865-910d-878bbe17a65f.png)
+
+![image](https://user-images.githubusercontent.com/95879036/149569369-d8c343ea-4ff9-4767-88f2-85e8d3072be5.png)
+
+![image](https://user-images.githubusercontent.com/95879036/149569413-d975e507-2cf1-4f76-9bae-f105cf7df813.png)
+
+![image](https://user-images.githubusercontent.com/95879036/149569478-5b67c5b8-25e2-4c93-be81-317f645bd8cc.png)
+
+
+
+
 
 
