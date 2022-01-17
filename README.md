@@ -262,7 +262,7 @@ l1d_size=256kB , l1d_assoc=8 ,l2_size=4MB  ,cacheline_size=256
 ![image](https://user-images.githubusercontent.com/95879036/146532938-f66c25bd-60c1-4362-ad4e-c9333ecf5ea8.png)
 
 
-Για τα υπόλοιπα benchmarks αποφασίσαμε να χρησιμοποιήσουμε, όπως προτείνεται _**scripts**_ τα οποία φαίνονται στο φάκελο με το αντίστοιχο όνομα.
+Τα αποτελέσματα για τα υπόλοιπα benchmarks φαίνομαι στα παρακάτω διαγράμματα, όπου CPI είναι η τιμή για τις default τιμές.
 
 ![image](https://user-images.githubusercontent.com/95879036/149569329-8c637021-0d90-4865-910d-878bbe17a65f.png)
 
