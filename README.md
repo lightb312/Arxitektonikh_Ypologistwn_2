@@ -264,11 +264,21 @@ l1d_size=256kB , l1d_assoc=8 ,l2_size=4MB  ,cacheline_size=256
 
 Τα αποτελέσματα για τα υπόλοιπα benchmarks φαίνομαι στα παρακάτω διαγράμματα, όπου CPI είναι η τιμή για τις default τιμές.
 
+Για να πάρουμε το optimal αποτέλεσμα χρησιμοποιήθηκαν οι αντίστοιχες εντολές.
+ 
+ ./build/ARM/gem5.opt -d spec_results/specsjeng configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l1i_size=64kB --l1i_assoc=8 --l1d_size=32kB --l1d_assoc=4 --l2_size=4MB --l2_assoc=2 --cacheline_size=256 -c spec_cpu2006/458.sjeng/src/specsjeng -o "spec_cpu2006/458.sjeng/data/test.txt" -I 100000000
+
 ![image](https://user-images.githubusercontent.com/95879036/149569329-8c637021-0d90-4865-910d-878bbe17a65f.png)
+
+  ./build/ARM/gem5.opt -d spec_results/spechmmer configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l1i_size=128kB --l1i_assoc=8 --l1d_size=256kB --l1d_assoc=8 --cacheline_size=256 -c spec_cpu2006/456.hmmer/src/spechmmer -o "--fixed 0 --mean 325 --num 45000 --sd 200 --seed 0 spec_cpu2006/456.hmmer/data/bombesin.hmm" -I 100000000
 
 ![image](https://user-images.githubusercontent.com/95879036/149569369-d8c343ea-4ff9-4767-88f2-85e8d3072be5.png)
 
+  ./build/ARM/gem5.opt -d spec_results/specmcf configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l1i_size=128kB --l1d_size=256kB --l1i_assoc=4 l1d_assoc=8 l2_size=4MB --l2_assoc=4 --cacheline_size=256 -c spec_cpu2006/429.mcf/src/specmcf -o "spec_cpu2006/429.mcf/data/inp.in" -I 100000000
+
 ![image](https://user-images.githubusercontent.com/95879036/149569413-d975e507-2cf1-4f76-9bae-f105cf7df813.png)
+
+  ./build/ARM/gem5.opt -d spec_results/speclibm configs/example/se.py --cpu-type=MinorCPU --caches --l2cache --l1i_size=64kB --l1i_assoc=4 --l2_size=4MB --cacheline_size=256 -c spec_cpu2006/470.lbm/src/speclibm -o "20 spec_cpu2006/470.lbm/data/lbm.in 0 1 spec_cpu2006/470.lbm/data/100_100_130_cf_a.of" -I 100000000
 
 ![image](https://user-images.githubusercontent.com/95879036/149569478-5b67c5b8-25e2-4c93-be81-317f645bd8cc.png)
 
